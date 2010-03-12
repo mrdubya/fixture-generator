@@ -16,10 +16,12 @@
 
 """Generate a fixture list.
 
-usage: fixgen [-d] [-h] [-p number] number
+usage: fixgen [-h] [-d] [-p number] [-f file | [-l] number]
 
 -d generate double round-robin (second half matches reversed).
+-f get team names from a file
 -h display this help.
+-l use letters for team names (default is numbers)
 -p phase shift for fixture list.
 number of teams (odd values rounded up 1).
 """
@@ -47,12 +49,14 @@ def usage(mesg):
 
 # Parse the command line options
 try:
-    opts, pargs = getopt.getopt(sys.argv[1:], 'dhp:')
+    opts, pargs = getopt.getopt(sys.argv[1:], 'df:hlp:')
 except getopt.GetoptError, e:
     usage(e)
 
 double = False
 offset = 0
+letters = False
+ids = []
 for option, value in opts:
     if option == '-h':  # Display help
         sys.exit(__doc__)
@@ -60,20 +64,42 @@ for option, value in opts:
     elif option == '-d':  # Double round robin
         double = True
 
+    elif option == '-f':  # File provides team ids
+        try:
+            ids = [line.strip() for line in file(value).readlines()]
+            if len(ids) % 1:
+                ids.append('No game')
+        except:
+            usage('Failed to read teams from file.')
+
+    elif option == '-l':  # Use letters for team ids
+        letters = True
+
     elif option == '-p':  # Offset starting fixture
         try:
             offset = int(value)
         except:
             usage('Invalid start fixture shift.')
 
-if len(pargs) != 1:
-    usage('Wrong number of arguments given.')
-try:
-    number = int(pargs[0])
-except:
-    usage('Invalid number of teams')
+# Generate initial team id sequence if no file given
+if not ids :
+    if len(pargs) != 1:
+        usage('Wrong number of arguments given.')
+    try:
+        number = int(pargs[0])
+        if number % 1:
+            number += 1
+    except:
+        usage('Invalid number of teams')
 
-fl = generate_fixtures(number, berger_table, double, offset)
+    if letters:
+        if number > 26:
+            usage('Using letters with more than 26 teams.')
+        ids = [chr(ord('A') + i) for i in range(number)]
+    else:
+        ids = [i for i in range(number)]
+
+fl = generate_fixtures(ids, berger_table, double, offset)
 print_lists(fl)
 print_grid(fl)
 

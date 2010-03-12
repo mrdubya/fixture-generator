@@ -34,7 +34,7 @@ class Fixture(object):
         return self.__str__()
 
 
-def berger_table(number, double=True):
+def berger_table(teams, double=True):
     # Generate team fixture list using a Berger table.
     #
     # Team ids essentially start in two rows beginning at the bottom left
@@ -61,17 +61,16 @@ def berger_table(number, double=True):
         # Rotate n-1 elements clockwise (right to left) dist places
         dist = dist % len(arr)
         return arr[dist:-1] + arr[:dist] + arr[-1:]
-    # Generate initial team id sequence
-    ids = [chr(ord('A') + i) for i in range(number)]
     # Generate pairings - 1 less than number of teams
+    number = len(teams)
     mid_point = number/2
     pairings = []
     for i in range(number - 1):
-        home = ids[:mid_point]
-        away = ids[mid_point:]
+        home = teams[:mid_point]
+        away = teams[mid_point:]
         away.reverse()
         pairings.append(map(Fixture, zip(home, away)))
-        ids = rotate(ids, 1)
+        teams = rotate(teams, 1)
     # Interleave and fix up last team home and away (always first in pairings)
     fixtures = []
     for i in range(mid_point - 1):
@@ -88,14 +87,11 @@ def berger_table(number, double=True):
     return fixtures
 
 
-def generate_fixtures(number, generator_, double=False, offset=0):
-    # Ensure even number of teams
-    if number % 1:
-        number += 1
+def generate_fixtures(teams, generator_, double=False, offset=0):
     # Generate the fixture list
-    fixtures = generator_(number, double)
+    fixtures = generator_(teams, double)
     # Shift starting fixture
-    offset = offset % number
+    offset = offset % len(teams)
     fixtures = fixtures[offset:] + fixtures[:offset]
     return fixtures
 
