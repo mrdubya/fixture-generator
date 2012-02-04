@@ -34,7 +34,7 @@ from fixture_generator import generate_fixtures, berger_table, print_lists, prin
 
 # Utility product information
 __product__ = 'Fixture generator'
-__copyright__ = 'Copyright 2010 Mike Williams. All rights reserved.'
+__copyright__ = 'Copyright 2010-2012 Mike Williams. All rights reserved.'
 version_info = (0, 1, 0, 'beta', 0)
 __version__ = '%d.%d.%d' % version_info[:3]
 if version_info[3] != 'final':
@@ -87,7 +87,7 @@ if not ids :
         usage('Wrong number of arguments given.')
     try:
         number = int(pargs[0])
-        if number % 1:
+        if number % 2 == 1:
             number += 1
     except:
         usage('Invalid number of teams')
