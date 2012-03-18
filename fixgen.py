@@ -30,7 +30,8 @@ import getopt
 import re
 import sys
 
-from fixture_generator import generate_fixtures, berger_table, print_lists, print_grid
+from bergertable import berger_table
+from fixture_generator import generate_fixtures, print_lists, print_grid
 
 # Utility product information
 __product__ = 'Fixture generator'
