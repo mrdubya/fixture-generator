@@ -1,6 +1,6 @@
 #! /usr/local/bin/python
 
-# Copyright (c) 2010 Michael Williams <mrw@eandem.co.uk>
+# Copyright (c) 2010-2012 Michael Williams <mrw@eandem.co.uk>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
@@ -67,7 +67,7 @@ for option, value in opts:
     elif option == '-f':  # File provides team ids
         try:
             ids = [line.strip() for line in file(value).readlines()]
-            if len(ids) % 1:
+            if len(ids) % 2 == 1:
                 ids.append('No game')
         except:
             usage('Failed to read teams from file.')
