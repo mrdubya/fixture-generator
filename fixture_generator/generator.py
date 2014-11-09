@@ -1,4 +1,4 @@
-#! /usr/local/bin/python
+#!/usr/bin/env python
 
 # Copyright (c) 2010-2014 Mike Williams <mrmrdubya@gmail.com>
 #
