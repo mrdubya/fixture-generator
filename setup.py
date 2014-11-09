@@ -9,6 +9,6 @@ setup(name='fixture-generator',
       author_email='mrmrdubya@gmail.com',
       license='ISC',
       packages=['fixture_generator'],
-      scripts=['bin/fixgen'],
+      scripts=['bin/fixgen', 'bin/fixgen.bat'],
       include_package_data=True,
       zip_safe=False)
