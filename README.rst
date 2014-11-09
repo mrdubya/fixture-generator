@@ -23,8 +23,8 @@ fixture list for 3/4 teams).
 
 The output is a simple list of 0 v 1, 2 v 3 and so on for each round of the
 competition.
-Specify -l to use letters instead of numbers.
-With -f team names will be read from a file (one team name per line).
+Specify ``-l`` to use letters instead of numbers.
+With ``-f`` team names will be read from a file (one team name per line).
 The competition round fixture lists are followed by a per team list of matches
 where they are first named (usually home matches).
 For a competition with 6 teams the output is the following::
