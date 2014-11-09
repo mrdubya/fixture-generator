@@ -69,7 +69,7 @@ round-robin.
 So using the same file of team names as above with a phase of 2 results in the
 following::
 
-    $ fixgen.py -p 2 -f teams
+    $ fixgen -p 2 -f teams
     [Tigers v No game, Eagles v Bulls]
     [Bulls v No game, Tigers v Eagles]
     [No game v Eagles, Bulls v Tigers]
