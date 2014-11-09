@@ -35,15 +35,19 @@ def berger_table(teams, double=True):
     >>> berger_table(range(4), False)
     [[(0, 3), (1, 2)], [(3, 2), (0, 1)], [(1, 3), (2, 0)]]
 
-    One property of Berger table is that teams offset by half number of teams are
-    never away or home at the same time (e.g. for 10 teams, 1 & 6, 2 & 7, etc.)
+    One property of Berger table is that teams offset by half number of teams
+    are never away or home at the same time (e.g. for 10 teams, 1 & 6, 2 & 7,
+    etc.)
 
     To generate full home-away fixture list the last two fixture lists need to
     be reversed before adding the reversed fixtures, else some teams will have
     3 away or home matches in a row (only works for 6 or more teams).
 
     >>> berger_table(range(6))
-    [[(0, 5), (1, 4), (2, 3)], [(5, 3), (4, 2), (0, 1)], [(1, 5), (2, 0), (3, 4)], [(2, 5), (3, 1), (4, 0)], [(5, 4), (0, 3), (1, 2)], [(5, 0), (4, 1), (3, 2)], [(3, 5), (2, 4), (1, 0)], [(5, 1), (0, 2), (4, 3)], [(5, 2), (1, 3), (0, 4)], [(4, 5), (3, 0), (2, 1)]]
+    [[(0, 5), (1, 4), (2, 3)], [(5, 3), (4, 2), (0, 1)], [(1, 5), (2, 0), \
+(3, 4)], [(2, 5), (3, 1), (4, 0)], [(5, 4), (0, 3), (1, 2)], [(5, 0), (4, 1), \
+(3, 2)], [(3, 5), (2, 4), (1, 0)], [(5, 1), (0, 2), (4, 3)], [(5, 2), (1, 3), \
+(0, 4)], [(4, 5), (3, 0), (2, 1)]]
     """
     def rotate(arr, dist):
         # Rotate n-1 elements clockwise (right to left) dist places
@@ -68,10 +72,11 @@ def berger_table(teams, double=True):
         fixtures.append(p)
     fixtures.append(pairings[mid_point - 1])
     if double:
-        # Double round robin, swap last two fixture lists and add reverse match fixtures
+        # Double round robin, swap last two fixture lists and add reverse match
+        # fixtures
         fixtures[-2], fixtures[-1] = fixtures[-1], fixtures[-2]
         fixtures.extend([[(match[1], match[0]) for match in fixture]
-                            for fixture in fixtures])
+                         for fixture in fixtures])
     return fixtures
 
 

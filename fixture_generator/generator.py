@@ -37,9 +37,11 @@ def generate_fixtures(teams, generator_, double=False, offset=0):
     fixtures = fixtures[offset:] + fixtures[:offset]
     return fixtures
 
+
 def print_lists(fixture_list):
     for f in fixture_list:
         print f
+
 
 def print_grid(fixture_list):
     away = {}
