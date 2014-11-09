@@ -1,6 +1,6 @@
 #! /usr/local/bin/python
 
-# Copyright (c) 2012 Michael Williams <mrw@eandem.co.uk>
+# Copyright (c) 2012-2014 Mike Williams <mrw@eandem.co.uk>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
