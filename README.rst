@@ -8,6 +8,7 @@ fixtures in a row during for the competition (apart from a full home-away
 fixture list for 3/4 teams).
 
 ::
+
     $ fixgen.py -h
     Generate a fixture list.
 
