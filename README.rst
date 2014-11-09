@@ -9,7 +9,7 @@ fixture list for 3/4 teams).
 
 ::
 
-    $ fixgen.py -h
+    $ fixgen -h
     Generate a fixture list.
 
     usage: fixgen [-h] [-d] [-p number] [-f file | [-l] number]
@@ -29,7 +29,7 @@ The competition round fixture lists are followed by a per team list of matches
 where they are first named (usually home matches).
 For a competition with 6 teams the output is the following::
 
-    $ fixgen.py 6      
+    $ fixgen 6
     [0 v 5, 1 v 4, 2 v 3]
     [5 v 3, 4 v 2, 0 v 1]
     [1 v 5, 2 v 0, 3 v 4]
@@ -50,7 +50,7 @@ competition round.
 A file with the team names Bulls, Tigers, and Eagles produces the following
 output::
 
-    $ fixgen.py -f teams
+    $ fixgen -f teams
     [Bulls v No game, Tigers v Eagles]
     [No game v Eagles, Bulls v Tigers]
     [Tigers v No game, Eagles v Bulls]
