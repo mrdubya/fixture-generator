@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# Copyright (c) 2012-2014 Mike Williams <mrmrdubya@gmail.com>
+# Copyright (c) 2012-2023 Mike Williams <mrmrdubya@gmail.com>
 #
 # Permission to use, copy, modify, and distribute this software for any
 # purpose with or without fee is hereby granted, provided that the above
