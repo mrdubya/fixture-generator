@@ -17,9 +17,8 @@
 
 class Fixture(object):
 
-    def __init__(self, (home, away)):
-        self.home = home
-        self.away = away
+    def __init__(self, teams):
+        self.home, self.away = teams
 
     def __str__(self):
         return '%s v %s' % (self.home, self.away)
@@ -31,7 +30,7 @@ class Fixture(object):
 def generate_fixtures(teams, generator_, double=False, offset=0):
     # Generate the fixture list
     rounds = generator_(teams, double)
-    fixtures = [map(Fixture, round) for round in rounds]
+    fixtures = [[Fixture(match) for match in round] for round in rounds]
     # Shift starting fixture
     offset = offset % len(teams)
     fixtures = fixtures[offset:] + fixtures[:offset]
@@ -40,7 +39,7 @@ def generate_fixtures(teams, generator_, double=False, offset=0):
 
 def print_lists(fixture_list):
     for f in fixture_list:
-        print f
+        print(f)
 
 
 def print_grid(fixture_list):
@@ -54,10 +53,8 @@ def print_grid(fixture_list):
             am.append(' ')
             away[match.away] = am
 
-    home = away.keys()
-    home.sort()
-    for team in home:
-        print team, away[team]
+    for team in sorted(away.keys()):
+        print(team, away[team])
 
 if __name__ == '__main__':
     import doctest

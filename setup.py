@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='fixture-generator',
-      version='0.1',
+      version='0.2',
       description='Generate league fixture tables.',
       long_description=open('README.rst').read(),
       url='https://github.com/mrdubya/fixture-generator.git',

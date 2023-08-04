@@ -32,7 +32,7 @@ def berger_table(teams, double=True):
     one less than the number of teams).  And finally the matches for the last
     id (8 in the above example) in the interleaved pairings are reversed.
 
-    >>> berger_table(range(4), False)
+    >>> berger_table(list(range(4)), False)
     [[(0, 3), (1, 2)], [(3, 2), (0, 1)], [(1, 3), (2, 0)]]
 
     One property of Berger table is that teams offset by half number of teams
@@ -43,7 +43,7 @@ def berger_table(teams, double=True):
     be reversed before adding the reversed fixtures, else some teams will have
     3 away or home matches in a row (only works for 6 or more teams).
 
-    >>> berger_table(range(6))
+    >>> berger_table(list(range(6)))
     [[(0, 5), (1, 4), (2, 3)], [(5, 3), (4, 2), (0, 1)], [(1, 5), (2, 0), \
 (3, 4)], [(2, 5), (3, 1), (4, 0)], [(5, 4), (0, 3), (1, 2)], [(5, 0), (4, 1), \
 (3, 2)], [(3, 5), (2, 4), (1, 0)], [(5, 1), (0, 2), (4, 3)], [(5, 2), (1, 3), \
@@ -55,13 +55,13 @@ def berger_table(teams, double=True):
         return arr[dist:-1] + arr[:dist] + arr[-1:]
     # Generate pairings - 1 less than number of teams
     number = len(teams)
-    mid_point = number/2
+    mid_point = number//2
     pairings = []
     for i in range(number - 1):
         home = teams[:mid_point]
         away = teams[mid_point:]
         away.reverse()
-        pairings.append(zip(home, away))
+        pairings.append(list(zip(home, away)))
         teams = rotate(teams, 1)
     # Interleave and fix up last team home and away (always first in pairings)
     fixtures = []
